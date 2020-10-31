@@ -10,6 +10,14 @@
 let targetLowerBound = 120  // нижний предел
 let targetUpperBound = 150  // верхний предел
 let currentHR = 147         // текущий пульс
-
-
+let isBelowTarget: Bool = currentHR < targetLowerBound // ниже предела
+let isAboveTarget: Bool = targetUpperBound < currentHR // выше пределов
+let isInTarget:Bool = !isBelowTarget && !isAboveTarget
+if isBelowTarget {
+    print("Вы всё делаете правильно, но попробуйте немного ускориться!")
+}else if isAboveTarget{
+    print("Слишком быстро!")
+}else if isInTarget{
+    print("Вы двигаетесь в правильном темпе!")
+}
 //: [Ранее](@previous)  |  страница 5 из 9  |  [Далее: Упражнение - инструкция switch](@next)
