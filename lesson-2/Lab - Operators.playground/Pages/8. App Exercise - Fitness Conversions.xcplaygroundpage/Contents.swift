@@ -8,8 +8,10 @@
  
  Создайте константу `percentOfGoal` типа `Double`, которая будет равна проценту выполнения цели на данный момент.  Нужно будет привести константы типа `Int` к типу `Double` в вашем вычислении.
  */
-
-
+var steps: Int = Int.random(in: 500...6000)
+let goal: Int = 10_000
+let percentOfGoal: Double = Double(steps) / Double(goal) * 100
+print(percentOfGoal)
 /*:
  
  _Copyright © 2017 Apple Inc._
