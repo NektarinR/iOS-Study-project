@@ -9,21 +9,23 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad( {
+    override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-    var sample = "пример"
-    print(sample)
-    
-    if false {
-        print("Будет ли выполнена эта строка?")
-        someMetho()
+        let sample = "пример"
+        print(sample)
+        
+        //строка не выполниться так как false не сработает
+        if false {
+            print("Будет ли выполнена эта строка?")
+            someMethod()
+            
+        }
     }
-}
     
     func someMethod() {
-        
+        print("Hello amazing World!")
     }
     
 }
