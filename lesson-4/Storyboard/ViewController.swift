@@ -9,58 +9,63 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    /// Счётчик нажатий на кнопку
-    var counter: Int = 0
-
-    /// Наша кнопка
-    @IBOutlet weak var someButton: UIButton!
+    /// Результат предыдущего сложения
+    var previosresult: Int = 0
+    var nextValue: Bool = false
     
-    /// Наш переключатель
-    @IBOutlet weak var someSwitch: UISwitch!
     
-    /// Наш лейбл
-    @IBOutlet weak var someLabel: UILabel!
+    @IBOutlet private weak var textFieldRef: UITextField!
+    
+    @IBOutlet private weak var textFieldResultRef: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        someButton.setTitle("Наша кнопка", for: .normal)
-        someButton.layer.cornerRadius = 20
-        
-    }
 
-    
-    /// Обработка нажатия на переключатель
-    /// - Parameter sender: Собственно сам компонент
-    @IBAction func changeValueOfSwitch(_ sender: UISwitch) {
-                
     }
     
+    func addToTextValue(value: String){
+        
+        textFieldRef.text?.append(value)
+    }
     
-    /// Обрабатываем нажатие на нашу кнопку
-    @IBAction func buttonPressed() {
-        
-        // Меняем значение нашего переключателя
-        someSwitch.isOn.toggle()
-        
-        // Увеличиваем количество нажатий на единицу
-        counter += 1
-        
-        // Задаем информацию о состоянии переключателя
-        let switchText: String = someSwitch.isOn ? "Переключатель включён" : "Переключатель выключен"
-        
-        // Задаём информацию о количестве нажатий
-        let counterText: String = String(counter)
-        
-        // Вспомогательная надпись для счётчика
-        let supportedText: String = "Количество нажатий:"
-        
-        // Складываем все текстовки в один текст
-        let result: String = switchText + " " + supportedText + " " + counterText
-        
-        // Присваиваем нашему лейблу текст
-        someLabel.text = result
+    @IBAction func oneButtonTouchDown(_ sender: UIButton, forEvent event: UIEvent) {
+        addToTextValue(value: String((sender.titleLabel?.text)!))
+    }
+    
+    @IBAction func twoButtonTouchDown(_ sender: UIButton, forEvent event: UIEvent) {
+
+        addToTextValue(value: String((sender.titleLabel?.text)!))
+    }
+    
+    @IBAction func threeButtonTouchDown(_ sender: UIButton, forEvent event: UIEvent) {
+        addToTextValue(value: String((sender.titleLabel?.text)!))
+    }
+    
+    @IBAction func fourButtonTouchDown(_ sender: UIButton, forEvent event: UIEvent) {
+        addToTextValue(value: String((sender.titleLabel?.text)!))
+    }
+    
+    @IBAction func fiveButtonTouchDown(_ sender: UIButton, forEvent event: UIEvent) {
+        addToTextValue(value: String((sender.titleLabel?.text)!))
+    }
+    
+    @IBAction func sixButtonTouchDown(_ sender: UIButton, forEvent event: UIEvent) {
+        addToTextValue(value: String((sender.titleLabel?.text)!))
+    }
+    
+    @IBAction func plusButtonTouchDown(_ sender: UIButton, forEvent event: UIEvent) {
+        if nextValue {
+            let intText = Int((textFieldRef.text)!)
+            previosresult += intText!
+            textFieldRef.text?.removeAll()
+            textFieldResultRef.text = String(previosresult)
+            return
+        }
+        let intText = Int((textFieldRef.text)!)
+        previosresult += intText!
+        nextValue = true
+        textFieldRef.text?.removeAll()
     }
 }
 
