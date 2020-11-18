@@ -9,11 +9,43 @@
  
  Вызовите функцию несколько раз, передавая ей различные значения `steps` и `goal`.  Зафиксируйте результаты и убедитесь, что она выдаёт то, что вы ожидаете, для каждой из пары параметров, переданных в функцию.
  */
+func progressUpdate(_ steps: Int, _ goal: Int) -> String {
+    let result = Double(steps) / Double(goal) * 100
+    if result < 10 {
+        return "Хорошее начало!"
+    }
+    
+    if result < 50 {
+        return "Вы на пути к половине цели!"
+    }
+    
+    if result < 90 {
+        return "Вы уже выполнили больше половины своей цели!"
+    }
+    
+    if result < 100 {
+        return "Вы почти достигли цели!"
+    }
+    
+    return "Вы выполнили вашу цель"
+}
 
+print(progressUpdate(1000, 10000), "== Вы на пути к половине цели!")
+
+print(progressUpdate(100, 10000), "== Хорошее начало!")
 
 /*:
  Ваше фитнесс-приложение поможет бегунам не выбиться из графика для достижения их целей.   Напишите функцию `pacing`, принимающую четыре параметра типа `Double`, называющиеся `currentDistance` (текущее расстояние), `totalDistance` (общее расстояние), `currentTime` (текущее время) и `goalTime` (целевое время).  Функция должна вычислить, не выбивается ли бегун из графика, чтобы достичь или побить цель `goalTime`.  Если не выбивается, напечатайте «Держите темп!», в противном случае напечатайте «Вам нужно ускорить темп, чтобы успеть!»
  */
-
-
+func pacing(_ currentDistance: Double, _ goalDistance: Double, _ currentTime: Double, _ goalTime: Double) {
+    let goalSpeed = goalDistance / goalTime
+    let currentSpeed = currentDistance / currentTime
+    if currentSpeed >= goalSpeed {
+        print("Держите темп!")
+    }else {
+        print("Вам нужно ускорить темп, чтобы успеть!")
+    }
+}
+pacing(1000, 5000, 350, 3000)
+pacing(1000, 5000, 700, 3000)
 //: [Ранее](@previous)  |  страница 4 из 6  |  [Далее: Упражнение — Возвращение результатов](@next)

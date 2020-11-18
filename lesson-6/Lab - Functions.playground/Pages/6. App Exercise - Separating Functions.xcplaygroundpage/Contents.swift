@@ -7,10 +7,25 @@
  
  В качестве примера, напишите функцию, которая выполняет только часть того, что делала ранее функция `pacing`.  Назовите новую функцию `calculatePace`.  Она должна принимать три аргумента типа `Double` с именами `currentDistance` (текущее расстояние), `totalDistance` (общее расстояние), и `currentTime` (текущее время), и возвращать значение типа `Double`, соответствующее времени, в которое пользователь достигнет финиша, основываясь на значениях текущего расстояния и времени.  Вызовите функцию несколько раз и напечатайте результаты.
  */
-
+func calculatePace (_ currentDistance: Double, _ totalDistance: Double, _ currentTime: Double) -> Double {
+    let speed: Double = currentDistance / currentTime
+    let futureTime: Double = totalDistance / speed
+    return futureTime
+}
+print("Ты достигнешь финиша через \(calculatePace(100, 1000, 10)) секунд")
 
 /*:
  Теперь напишите функцию с именем `pacing`, которая принимает четыре аргумента типа `Double` с названиями `currentDistance`, `totalDistance`, `currentTime` и `goalTime` (целевое время).  Функция должна также возвращать строку типа `String`, в которой будет содержаться сообщение для показа пользователю.  Функция должна вызывать `calculatePace`, передавать ей соответствующие значения, и запоминать возращаемое значение.  Функция затем должна сравнить возращённое значение и `goalTime`, и, если пользователь успевает, вернуть «Держите темп!», в противном случае вернуть «Вам нужно ускорить темп, чтобы успеть!».  Вызовите функцию и зафиксируйте результаты.
  */
-
+func pacing(_ currentDistance: Double, _ goalDistance: Double, _ currentTime: Double, _ goalTime: Double) {
+    let goalSpeed = goalDistance / goalTime
+    let currentSpeed = currentDistance / currentTime
+    if currentSpeed >= goalSpeed {
+        print("Держите темп!")
+    }else {
+        print("Вам нужно ускорить темп, чтобы успеть!")
+    }
+}
+pacing(1000, 5000, 350, 3000)
+pacing(1000, 5000, 700, 3000)
 //: [Ранее](@previous)  |  страница 6 из 6
