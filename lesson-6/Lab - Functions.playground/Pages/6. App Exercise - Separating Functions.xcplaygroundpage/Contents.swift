@@ -17,15 +17,13 @@ print("Ты достигнешь финиша через \(calculatePace(100, 10
 /*:
  Теперь напишите функцию с именем `pacing`, которая принимает четыре аргумента типа `Double` с названиями `currentDistance`, `totalDistance`, `currentTime` и `goalTime` (целевое время).  Функция должна также возвращать строку типа `String`, в которой будет содержаться сообщение для показа пользователю.  Функция должна вызывать `calculatePace`, передавать ей соответствующие значения, и запоминать возращаемое значение.  Функция затем должна сравнить возращённое значение и `goalTime`, и, если пользователь успевает, вернуть «Держите темп!», в противном случае вернуть «Вам нужно ускорить темп, чтобы успеть!».  Вызовите функцию и зафиксируйте результаты.
  */
-func pacing(_ currentDistance: Double, _ goalDistance: Double, _ currentTime: Double, _ goalTime: Double) {
-    let goalSpeed = goalDistance / goalTime
-    let currentSpeed = currentDistance / currentTime
-    if currentSpeed >= goalSpeed {
-        print("Держите темп!")
-    }else {
-        print("Вам нужно ускорить темп, чтобы успеть!")
+func pacing(_ currentDistance: Double, _ goalDistance: Double, _ currentTime: Double, _ goalTime: Double) -> String{
+    let futureTime = calculatePace(currentDistance, goalDistance, currentTime)
+    if futureTime >= goalTime {
+        return "Держите темп!"
     }
+    return "Вам нужно ускорить темп, чтобы успеть!"
 }
-pacing(1000, 5000, 350, 3000)
-pacing(1000, 5000, 700, 3000)
+print(pacing(1000, 5000, 350, 3000))
+print(pacing(1000, 5000, 700, 3000))
 //: [Ранее](@previous)  |  страница 6 из 6
